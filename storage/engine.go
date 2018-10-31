@@ -148,6 +148,7 @@ func (e *Engine) PrometheusCollectors() []prometheus.Collector {
 	// TODO(edd): Get prom metrics for TSM.
 	// TODO(edd): Get prom metrics for index.
 	// TODO(edd): Get prom metrics for series file.
+	metrics = append(metrics, e.engine.PrometheusCollectors()...)
 	metrics = append(metrics, e.retentionEnforcer.PrometheusCollectors()...)
 	return metrics
 }

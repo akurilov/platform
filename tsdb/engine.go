@@ -61,8 +61,6 @@ type Engine interface {
 	MeasurementTagKeysByExpr(name []byte, expr influxql.Expr) (map[string]struct{}, error)
 	TagKeyCardinality(name, key []byte) int
 
-	// Statistics will return statistics relevant to this engine.
-	Statistics(tags map[string]string) []models.Statistic
 	LastModified() time.Time
 	DiskSize() int64
 	IsIdle() bool

@@ -207,12 +207,13 @@ func run() error {
 
 		engine := storage.NewEngine(enginePath, config, storage.WithRetentionEnforcer(bucketSvc))
 		engine.WithLogger(logger)
-		reg.MustRegister(engine.PrometheusCollectors()...)
 
 		if err := engine.Open(); err != nil {
 			logger.Error("failed to open engine", zap.Error(err))
 			return err
 		}
+		// The Engine's metrics must be registered after it opens.
+		reg.MustRegister(engine.PrometheusCollectors()...)
 		defer func() {
 			logger.Info("Stopping", zap.String("service", "storage-engine"))
 			if err := engine.Close(); err != nil {
