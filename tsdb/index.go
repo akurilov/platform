@@ -10,9 +10,6 @@ import (
 	"github.com/influxdata/platform/models"
 )
 
-// Available index types.
-const TSI1IndexName = "tsi1"
-
 // SeriesElem represents a generic series element.
 type SeriesElem interface {
 	Name() []byte
@@ -989,12 +986,6 @@ func (itr *tagValueMergeIterator) Next() (_ []byte, err error) {
 		itr.buf[i] = nil
 	}
 	return value, nil
-}
-
-// RegisteredIndexes returns the slice of currently registered indexes.
-func RegisteredIndexes() []string {
-	// TODO(edd): This can be removed, cleaning up test code in the process.
-	return []string{TSI1IndexName}
 }
 
 // assert will panic with a given formatted message if the given condition is false.
