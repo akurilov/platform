@@ -553,7 +553,11 @@ func (e *Engine) DiskSize() int64 {
 func (e *Engine) Open() error {
 	// Initialise metrics...
 	e.blockMetrics = newBlockMetrics(e.defaultMetricLabels)
-	e.compactionTracker = newCompactionTracker(e.blockMetrics)
+
+	// Propagate prometheus metrics down into trackers.
+	e.compactionTracker = newCompactionTracker(e.blockMetrics.compactionMetrics)
+	e.FileStore.fileTracker = newFileTracker(e.blockMetrics.fileMetrics)
+
 	e.scheduler.setCompactionTracker(e.compactionTracker)
 
 	if err := os.MkdirAll(e.path, 0777); err != nil {
@@ -606,7 +610,6 @@ func (e *Engine) PrometheusCollectors() []prometheus.Collector {
 	var metrics []prometheus.Collector
 	metrics = append(metrics, e.blockMetrics.PrometheusCollectors()...)
 
-	// TODO(edd): Add Filestore metrics
 	// TODO(edd): Add Cache metrics
 	// TODO(edd): Add WAL metrics
 	return metrics
@@ -1456,7 +1459,7 @@ func (l compactionLevel) String() string {
 // *NOTE* - compactionTracker fields should not be directory modified. Doing so
 // could result in the Engine exposing inaccurate metrics.
 type compactionTracker struct {
-	metrics *blockMetrics
+	metrics *compactionMetrics
 
 	// Note: Compactions are levelled as follows:
 	// 0   	– Snapshots
@@ -1470,8 +1473,8 @@ type compactionTracker struct {
 	queue  [6]uint64 // Gauge of TSM compactions queues (by level).
 }
 
-func newCompactionTracker(blockMetrics *blockMetrics) *compactionTracker {
-	return &compactionTracker{metrics: blockMetrics}
+func newCompactionTracker(metrics *compactionMetrics) *compactionTracker {
+	return &compactionTracker{metrics: metrics}
 }
 
 // Completed returns the total number of compactions for the provided level.
@@ -1511,7 +1514,7 @@ func (t *compactionTracker) Errors(level int) uint64 { return atomic.LoadUint64(
 func (t *compactionTracker) IncActive(level compactionLevel) {
 	atomic.AddUint64(&t.active[level], 1)
 
-	labels := t.metrics.CompactionLabels(level)
+	labels := t.metrics.Labels(level)
 	t.metrics.CompactionsActive.With(labels).Inc()
 }
 
@@ -1522,7 +1525,7 @@ func (t *compactionTracker) IncFullActive() { t.IncActive(5) }
 func (t *compactionTracker) DecActive(level compactionLevel) {
 	atomic.AddUint64(&t.active[level], ^uint64(0))
 
-	labels := t.metrics.CompactionLabels(level)
+	labels := t.metrics.Labels(level)
 	t.metrics.CompactionsActive.With(labels).Dec()
 }
 
@@ -1534,7 +1537,7 @@ func (t *compactionTracker) Attempted(level compactionLevel, success bool, durat
 	if success {
 		atomic.AddUint64(&t.ok[level], 1)
 
-		labels := t.metrics.CompactionLabels(level)
+		labels := t.metrics.Labels(level)
 		t.metrics.CompactionDuration.With(labels).Observe(duration.Seconds())
 
 		labels["status"] = "ok"
@@ -1544,7 +1547,7 @@ func (t *compactionTracker) Attempted(level compactionLevel, success bool, durat
 
 	atomic.AddUint64(&t.errors[level], 1)
 
-	labels := t.metrics.CompactionLabels(level)
+	labels := t.metrics.Labels(level)
 	labels["status"] = "error"
 	t.metrics.Compactions.With(labels).Inc()
 }
@@ -1558,7 +1561,7 @@ func (t *compactionTracker) SnapshotAttempted(success bool, duration time.Durati
 func (t *compactionTracker) SetQueue(level compactionLevel, length uint64) {
 	atomic.StoreUint64(&t.queue[level], length)
 
-	labels := t.metrics.CompactionLabels(level)
+	labels := t.metrics.Labels(level)
 	t.metrics.CompactionQueue.With(labels).Set(float64(length))
 }
 
