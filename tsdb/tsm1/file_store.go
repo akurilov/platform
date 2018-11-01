@@ -231,6 +231,7 @@ func NewFileStore(dir string) *FileStore {
 		},
 		obs:           noFileStoreObserver{},
 		parseFileName: DefaultParseFileName,
+		fileTracker:   newFileTracker(newFileMetrics(nil)),
 	}
 	fs.purger.fileStore = fs
 	return fs
