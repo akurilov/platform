@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"strconv"
 	"strings"
@@ -59,6 +60,9 @@ func setupF(cmd *cobra.Command, args []string) {
 		"Bucket":       result.Bucket.Name,
 		"Token":        result.Auth.Token,
 	})
+
+	ioutil.WriteFile(defaultTokenPath(), []byte(result.Auth.Token), 0600)
+
 	w.Flush()
 }
 

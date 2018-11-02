@@ -2,8 +2,11 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
+	"path/filepath"
 
+	"github.com/influxdata/platform"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -38,6 +41,26 @@ type Flags struct {
 
 var flags Flags
 
+func defaultTokenPath() string {
+	dir, err := platform.InfluxDir()
+	if err != nil {
+		return ""
+	}
+	return filepath.Join(dir, "credentials")
+}
+
+func getTokenFromPath(path string) (string, error) {
+	b, err := ioutil.ReadFile(path)
+	if err != nil {
+		return "", err
+	}
+	return string(b), nil
+}
+
+func writeTokenToPath(tok string, path string) error {
+	return ioutil.WriteFile(path, []byte(tok), 0600)
+}
+
 func init() {
 	viper.SetEnvPrefix("INFLUX")
 
@@ -45,6 +68,8 @@ func init() {
 	viper.BindEnv("TOKEN")
 	if h := viper.GetString("TOKEN"); h != "" {
 		flags.token = h
+	} else if tok, err := getTokenFromPath(defaultTokenPath()); err == nil {
+		flags.token = tok
 	}
 
 	influxCmd.PersistentFlags().StringVar(&flags.host, "host", "http://localhost:9999", "HTTP address of Influx")
