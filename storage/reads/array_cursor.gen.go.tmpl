@@ -37,6 +37,8 @@ func (c *{{$type}}) reset(cur cursors.{{.Name}}ArrayCursor) {
 	c.tmp.Timestamps, c.tmp.Values = nil, nil
 }
 
+func (c *{{$type}}) Stats() cursors.CursorStats { return c.{{.Name}}ArrayCursor.Stats() }
+
 func (c *{{$type}}) Next() {{$arrayType}} {
 	pos := 0
 	c.res.Timestamps = c.res.Timestamps[:cap(c.res.Timestamps)]
@@ -99,6 +101,10 @@ func (c *{{.name}}MultiShardArrayCursor) reset(cur cursors.{{.Name}}ArrayCursor,
 
 
 func (c *{{.name}}MultiShardArrayCursor) Err() error        { return c.err }
+
+func (c *{{.name}}MultiShardArrayCursor) Stats() cursors.CursorStats {
+	return c.{{.Name}}ArrayCursor.Stats()
+}
 
 func (c *{{.name}}MultiShardArrayCursor) Next() {{$arrayType}} {
 	for {
@@ -176,6 +182,8 @@ func new{{$Type}}(cur cursors.{{.Name}}ArrayCursor) *{{$type}} {
 	}
 }
 
+func (c {{$type}}) Stats() cursors.CursorStats { return c.{{.Name}}ArrayCursor.Stats() }
+
 func (c {{$type}}) Next() {{$arrayType}} {
 	a := c.{{.Name}}ArrayCursor.Next()
 	if len(a.Timestamps) == 0 {
@@ -206,6 +214,10 @@ type integer{{.Name}}CountArrayCursor struct {
 	cursors.{{.Name}}ArrayCursor
 }
 
+func (c *integer{{.Name}}CountArrayCursor) Stats() cursors.CursorStats {
+	return c.{{.Name}}ArrayCursor.Stats()
+}
+
 func (c *integer{{.Name}}CountArrayCursor) Next() *cursors.IntegerArray {
 	a := c.{{.Name}}ArrayCursor.Next()
 	if len(a.Timestamps) == 0 {
@@ -234,6 +246,7 @@ var {{.Name}}EmptyArrayCursor cursors.{{.Name}}ArrayCursor = &{{.name}}EmptyArra
 
 func (c *{{.name}}EmptyArrayCursor) Err() error { return nil }
 func (c *{{.name}}EmptyArrayCursor) Close() {}
+func (c *{{.name}}EmptyArrayCursor) Stats() cursors.CursorStats { return cursors.CursorStats{} }
 func (c *{{.name}}EmptyArrayCursor) Next() {{$arrayType}} { return &c.res }
 
 {{end}}

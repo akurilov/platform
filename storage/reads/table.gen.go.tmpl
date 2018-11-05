@@ -49,6 +49,17 @@ func (t *{{.name}}Table) Close() {
 	t.mu.Unlock()
 }
 
+func (t *{{.name}}Table) Stats() flux.TableStats {
+	if t.cur == nil {
+		return flux.TableStats{}
+	}
+	cs := t.cur.Stats()
+	return flux.TableStats{
+		ScannedValueN: cs.ScannedValueN,
+		ScannedBytes:  cs.ScannedBytes,
+	}
+}
+
 func (t *{{.name}}Table) Do(f func(flux.ColReader) error) error {
 	t.mu.Lock()
 	defer func() {

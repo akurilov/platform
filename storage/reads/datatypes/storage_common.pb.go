@@ -59,7 +59,7 @@ func (x ReadRequest_Group) String() string {
 	return proto.EnumName(ReadRequest_Group_name, int32(x))
 }
 func (ReadRequest_Group) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{0, 0}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{0, 0}
 }
 
 type ReadRequest_HintFlags int32
@@ -89,7 +89,7 @@ func (x ReadRequest_HintFlags) String() string {
 	return proto.EnumName(ReadRequest_HintFlags_name, int32(x))
 }
 func (ReadRequest_HintFlags) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{0, 1}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{0, 1}
 }
 
 type Aggregate_AggregateType int32
@@ -115,7 +115,7 @@ func (x Aggregate_AggregateType) String() string {
 	return proto.EnumName(Aggregate_AggregateType_name, int32(x))
 }
 func (Aggregate_AggregateType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{1, 0}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{1, 0}
 }
 
 type ReadResponse_FrameType int32
@@ -138,7 +138,7 @@ func (x ReadResponse_FrameType) String() string {
 	return proto.EnumName(ReadResponse_FrameType_name, int32(x))
 }
 func (ReadResponse_FrameType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{3, 0}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{3, 0}
 }
 
 type ReadResponse_DataType int32
@@ -170,7 +170,7 @@ func (x ReadResponse_DataType) String() string {
 	return proto.EnumName(ReadResponse_DataType_name, int32(x))
 }
 func (ReadResponse_DataType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{3, 1}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{3, 1}
 }
 
 // Request message for Storage.Read.
@@ -208,7 +208,7 @@ func (m *ReadRequest) Reset()         { *m = ReadRequest{} }
 func (m *ReadRequest) String() string { return proto.CompactTextString(m) }
 func (*ReadRequest) ProtoMessage()    {}
 func (*ReadRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{0}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{0}
 }
 func (m *ReadRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -247,7 +247,7 @@ func (m *Aggregate) Reset()         { *m = Aggregate{} }
 func (m *Aggregate) String() string { return proto.CompactTextString(m) }
 func (*Aggregate) ProtoMessage()    {}
 func (*Aggregate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{1}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{1}
 }
 func (m *Aggregate) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -287,7 +287,7 @@ func (m *Tag) Reset()         { *m = Tag{} }
 func (m *Tag) String() string { return proto.CompactTextString(m) }
 func (*Tag) ProtoMessage()    {}
 func (*Tag) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{2}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{2}
 }
 func (m *Tag) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -327,7 +327,7 @@ func (m *ReadResponse) Reset()         { *m = ReadResponse{} }
 func (m *ReadResponse) String() string { return proto.CompactTextString(m) }
 func (*ReadResponse) ProtoMessage()    {}
 func (*ReadResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{3}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{3}
 }
 func (m *ReadResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -374,7 +374,7 @@ func (m *ReadResponse_Frame) Reset()         { *m = ReadResponse_Frame{} }
 func (m *ReadResponse_Frame) String() string { return proto.CompactTextString(m) }
 func (*ReadResponse_Frame) ProtoMessage()    {}
 func (*ReadResponse_Frame) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{3, 0}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{3, 0}
 }
 func (m *ReadResponse_Frame) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -677,7 +677,7 @@ func (m *ReadResponse_GroupFrame) Reset()         { *m = ReadResponse_GroupFrame
 func (m *ReadResponse_GroupFrame) String() string { return proto.CompactTextString(m) }
 func (*ReadResponse_GroupFrame) ProtoMessage()    {}
 func (*ReadResponse_GroupFrame) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{3, 1}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{3, 1}
 }
 func (m *ReadResponse_GroupFrame) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -717,7 +717,7 @@ func (m *ReadResponse_SeriesFrame) Reset()         { *m = ReadResponse_SeriesFra
 func (m *ReadResponse_SeriesFrame) String() string { return proto.CompactTextString(m) }
 func (*ReadResponse_SeriesFrame) ProtoMessage()    {}
 func (*ReadResponse_SeriesFrame) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{3, 2}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{3, 2}
 }
 func (m *ReadResponse_SeriesFrame) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -757,7 +757,7 @@ func (m *ReadResponse_FloatPointsFrame) Reset()         { *m = ReadResponse_Floa
 func (m *ReadResponse_FloatPointsFrame) String() string { return proto.CompactTextString(m) }
 func (*ReadResponse_FloatPointsFrame) ProtoMessage()    {}
 func (*ReadResponse_FloatPointsFrame) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{3, 3}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{3, 3}
 }
 func (m *ReadResponse_FloatPointsFrame) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -797,7 +797,7 @@ func (m *ReadResponse_IntegerPointsFrame) Reset()         { *m = ReadResponse_In
 func (m *ReadResponse_IntegerPointsFrame) String() string { return proto.CompactTextString(m) }
 func (*ReadResponse_IntegerPointsFrame) ProtoMessage()    {}
 func (*ReadResponse_IntegerPointsFrame) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{3, 4}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{3, 4}
 }
 func (m *ReadResponse_IntegerPointsFrame) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -837,7 +837,7 @@ func (m *ReadResponse_UnsignedPointsFrame) Reset()         { *m = ReadResponse_U
 func (m *ReadResponse_UnsignedPointsFrame) String() string { return proto.CompactTextString(m) }
 func (*ReadResponse_UnsignedPointsFrame) ProtoMessage()    {}
 func (*ReadResponse_UnsignedPointsFrame) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{3, 5}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{3, 5}
 }
 func (m *ReadResponse_UnsignedPointsFrame) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -877,7 +877,7 @@ func (m *ReadResponse_BooleanPointsFrame) Reset()         { *m = ReadResponse_Bo
 func (m *ReadResponse_BooleanPointsFrame) String() string { return proto.CompactTextString(m) }
 func (*ReadResponse_BooleanPointsFrame) ProtoMessage()    {}
 func (*ReadResponse_BooleanPointsFrame) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{3, 6}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{3, 6}
 }
 func (m *ReadResponse_BooleanPointsFrame) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -917,7 +917,7 @@ func (m *ReadResponse_StringPointsFrame) Reset()         { *m = ReadResponse_Str
 func (m *ReadResponse_StringPointsFrame) String() string { return proto.CompactTextString(m) }
 func (*ReadResponse_StringPointsFrame) ProtoMessage()    {}
 func (*ReadResponse_StringPointsFrame) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{3, 7}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{3, 7}
 }
 func (m *ReadResponse_StringPointsFrame) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -956,7 +956,7 @@ func (m *CapabilitiesResponse) Reset()         { *m = CapabilitiesResponse{} }
 func (m *CapabilitiesResponse) String() string { return proto.CompactTextString(m) }
 func (*CapabilitiesResponse) ProtoMessage()    {}
 func (*CapabilitiesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{4}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{4}
 }
 func (m *CapabilitiesResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -994,7 +994,7 @@ func (m *HintsResponse) Reset()         { *m = HintsResponse{} }
 func (m *HintsResponse) String() string { return proto.CompactTextString(m) }
 func (*HintsResponse) ProtoMessage()    {}
 func (*HintsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{5}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{5}
 }
 func (m *HintsResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1037,7 +1037,7 @@ func (m *TimestampRange) Reset()         { *m = TimestampRange{} }
 func (m *TimestampRange) String() string { return proto.CompactTextString(m) }
 func (*TimestampRange) ProtoMessage()    {}
 func (*TimestampRange) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_common_01b6ac29b3fb8162, []int{6}
+	return fileDescriptor_storage_common_70e4648b822150df, []int{6}
 }
 func (m *TimestampRange) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1345,7 +1345,7 @@ func (m *ReadRequest) MarshalTo(dAtA []byte) (int, error) {
 		i += n3
 	}
 	if len(m.Trace) > 0 {
-		for k := range m.Trace {
+		for k, _ := range m.Trace {
 			dAtA[i] = 0x52
 			i++
 			v := m.Trace[k]
@@ -1884,7 +1884,7 @@ func (m *CapabilitiesResponse) MarshalTo(dAtA []byte) (int, error) {
 	var l int
 	_ = l
 	if len(m.Caps) > 0 {
-		for k := range m.Caps {
+		for k, _ := range m.Caps {
 			dAtA[i] = 0xa
 			i++
 			v := m.Caps[k]
@@ -4585,10 +4585,10 @@ var (
 )
 
 func init() {
-	proto.RegisterFile("storage_common.proto", fileDescriptor_storage_common_01b6ac29b3fb8162)
+	proto.RegisterFile("storage_common.proto", fileDescriptor_storage_common_70e4648b822150df)
 }
 
-var fileDescriptor_storage_common_01b6ac29b3fb8162 = []byte{
+var fileDescriptor_storage_common_70e4648b822150df = []byte{
 	// 1539 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x57, 0x5f, 0x8f, 0x2a, 0x49,
 	0x15, 0xa7, 0xf9, 0xcf, 0xe1, 0xcf, 0xf4, 0xad, 0xc5, 0x09, 0xdb, 0xd7, 0x85, 0x5e, 0x62, 0x36,

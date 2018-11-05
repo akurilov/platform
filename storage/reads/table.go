@@ -33,6 +33,8 @@ type table struct {
 	err error
 
 	cancelled int32
+
+	stats flux.TableStats
 }
 
 func newTable(
@@ -53,12 +55,13 @@ func newTable(
 	}
 }
 
-func (t *table) Key() flux.GroupKey   { return t.key }
-func (t *table) Cols() []flux.ColMeta { return t.cols }
-func (t *table) RefCount(n int)       {}
-func (t *table) Err() error           { return t.err }
-func (t *table) Empty() bool          { return t.l == 0 }
-func (t *table) Len() int             { return t.l }
+func (t *table) Key() flux.GroupKey     { return t.key }
+func (t *table) Cols() []flux.ColMeta   { return t.cols }
+func (t *table) RefCount(n int)         {}
+func (t *table) Err() error             { return t.err }
+func (t *table) Empty() bool            { return t.l == 0 }
+func (t *table) Len() int               { return t.l }
+func (t *table) Stats() flux.TableStats { return t.stats }
 
 func (t *table) Cancel() {
 	atomic.StoreInt32(&t.cancelled, 1)

@@ -15,6 +15,7 @@ type ResultSet interface {
 	Next() bool
 	Cursor() cursors.Cursor
 	Tags() models.Tags
+	CursorStats() cursors.CursorStats
 }
 
 type GroupResultSet interface {

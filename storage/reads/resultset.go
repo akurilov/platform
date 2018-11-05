@@ -66,3 +66,7 @@ func (r *resultSet) Cursor() cursors.Cursor {
 func (r *resultSet) Tags() models.Tags {
 	return r.row.Tags
 }
+
+// CursorStats returns the stats for the underlying cursors.
+// Available after resultset has been scanned.
+func (r *resultSet) CursorStats() cursors.CursorStats { return r.row.Query.Stats() }

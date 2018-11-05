@@ -55,6 +55,17 @@ func (t *floatTable) Close() {
 	t.mu.Unlock()
 }
 
+func (t *floatTable) Stats() flux.TableStats {
+	if t.cur == nil {
+		return flux.TableStats{}
+	}
+	cs := t.cur.Stats()
+	return flux.TableStats{
+		ScannedValueN: cs.ScannedValueN,
+		ScannedBytes:  cs.ScannedBytes,
+	}
+}
+
 func (t *floatTable) Do(f func(flux.ColReader) error) error {
 	t.mu.Lock()
 	defer func() {
@@ -260,6 +271,17 @@ func (t *integerTable) Close() {
 		t.cur = nil
 	}
 	t.mu.Unlock()
+}
+
+func (t *integerTable) Stats() flux.TableStats {
+	if t.cur == nil {
+		return flux.TableStats{}
+	}
+	cs := t.cur.Stats()
+	return flux.TableStats{
+		ScannedValueN: cs.ScannedValueN,
+		ScannedBytes:  cs.ScannedBytes,
+	}
 }
 
 func (t *integerTable) Do(f func(flux.ColReader) error) error {
@@ -469,6 +491,17 @@ func (t *unsignedTable) Close() {
 	t.mu.Unlock()
 }
 
+func (t *unsignedTable) Stats() flux.TableStats {
+	if t.cur == nil {
+		return flux.TableStats{}
+	}
+	cs := t.cur.Stats()
+	return flux.TableStats{
+		ScannedValueN: cs.ScannedValueN,
+		ScannedBytes:  cs.ScannedBytes,
+	}
+}
+
 func (t *unsignedTable) Do(f func(flux.ColReader) error) error {
 	t.mu.Lock()
 	defer func() {
@@ -676,6 +709,17 @@ func (t *stringTable) Close() {
 	t.mu.Unlock()
 }
 
+func (t *stringTable) Stats() flux.TableStats {
+	if t.cur == nil {
+		return flux.TableStats{}
+	}
+	cs := t.cur.Stats()
+	return flux.TableStats{
+		ScannedValueN: cs.ScannedValueN,
+		ScannedBytes:  cs.ScannedBytes,
+	}
+}
+
 func (t *stringTable) Do(f func(flux.ColReader) error) error {
 	t.mu.Lock()
 	defer func() {
@@ -881,6 +925,17 @@ func (t *booleanTable) Close() {
 		t.cur = nil
 	}
 	t.mu.Unlock()
+}
+
+func (t *booleanTable) Stats() flux.TableStats {
+	if t.cur == nil {
+		return flux.TableStats{}
+	}
+	cs := t.cur.Stats()
+	return flux.TableStats{
+		ScannedValueN: cs.ScannedValueN,
+		ScannedBytes:  cs.ScannedBytes,
+	}
 }
 
 func (t *booleanTable) Do(f func(flux.ColReader) error) error {

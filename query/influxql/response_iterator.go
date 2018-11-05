@@ -359,3 +359,5 @@ func (r *queryTable) Strings(j int) []string {
 func (r *queryTable) Times(j int) []values.Time {
 	return r.cols[j].([]values.Time)
 }
+
+func (t *queryTable) Stats() flux.TableStats { return flux.TableStats{} }

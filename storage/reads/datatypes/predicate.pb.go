@@ -55,7 +55,7 @@ func (x Node_Type) String() string {
 	return proto.EnumName(Node_Type_name, int32(x))
 }
 func (Node_Type) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_predicate_dbcd4976a789e072, []int{0, 0}
+	return fileDescriptor_predicate_b056947a31b951a2, []int{0, 0}
 }
 
 type Node_Comparison int32
@@ -99,7 +99,7 @@ func (x Node_Comparison) String() string {
 	return proto.EnumName(Node_Comparison_name, int32(x))
 }
 func (Node_Comparison) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_predicate_dbcd4976a789e072, []int{0, 1}
+	return fileDescriptor_predicate_b056947a31b951a2, []int{0, 1}
 }
 
 // Logical operators apply to boolean values and combine to produce a single boolean result.
@@ -123,7 +123,7 @@ func (x Node_Logical) String() string {
 	return proto.EnumName(Node_Logical_name, int32(x))
 }
 func (Node_Logical) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_predicate_dbcd4976a789e072, []int{0, 2}
+	return fileDescriptor_predicate_b056947a31b951a2, []int{0, 2}
 }
 
 type Node struct {
@@ -149,7 +149,7 @@ func (m *Node) Reset()         { *m = Node{} }
 func (m *Node) String() string { return proto.CompactTextString(m) }
 func (*Node) ProtoMessage()    {}
 func (*Node) Descriptor() ([]byte, []int) {
-	return fileDescriptor_predicate_dbcd4976a789e072, []int{0}
+	return fileDescriptor_predicate_b056947a31b951a2, []int{0}
 }
 func (m *Node) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -511,7 +511,7 @@ func (m *Predicate) Reset()         { *m = Predicate{} }
 func (m *Predicate) String() string { return proto.CompactTextString(m) }
 func (*Predicate) ProtoMessage()    {}
 func (*Predicate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_predicate_dbcd4976a789e072, []int{1}
+	return fileDescriptor_predicate_b056947a31b951a2, []int{1}
 }
 func (m *Predicate) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1334,9 +1334,9 @@ var (
 	ErrIntOverflowPredicate   = fmt.Errorf("proto: integer overflow")
 )
 
-func init() { proto.RegisterFile("predicate.proto", fileDescriptor_predicate_dbcd4976a789e072) }
+func init() { proto.RegisterFile("predicate.proto", fileDescriptor_predicate_b056947a31b951a2) }
 
-var fileDescriptor_predicate_dbcd4976a789e072 = []byte{
+var fileDescriptor_predicate_b056947a31b951a2 = []byte{
 	// 860 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x95, 0xdd, 0x8e, 0xdb, 0x44,
 	0x14, 0xc7, 0xe3, 0x7c, 0x6c, 0xe2, 0x93, 0xfd, 0x70, 0xa7, 0xbb, 0xdd, 0xe0, 0xa5, 0xc9, 0xb0,
